@@ -1,0 +1,50 @@
+; Title: Production MD for Stevia Matrix (Unrestrained)
+
+; Length of simulation
+dt              = 0.002     ; 2 fs time step
+nsteps          = 10000000  ; 10,000,000 steps * 0.002 ps = 20,000 ps (20 ns)
+
+; Output control (adjust to keep file sizes manageable on the cloud)
+nstxout-compressed = 5000   ; Save coordinates every 10 ps (yields 2,000 frames total)
+nstenergy          = 5000   ; Save energies every 10 ps
+nstlog             = 5000   ; Update log file every 10 ps
+
+
+; Bond parameters
+continuation            = yes       ; Continuing from NPT checkpoint
+constraint_algorithm    = lincs     
+constraints             = h-bonds   
+lincs_iter              = 1         
+lincs_order             = 4         
+
+; Nonbonded settings 
+cutoff-scheme           = Verlet    
+nstlist                 = 10        
+rcoulomb                = 1.0       
+rvdw                    = 1.0       
+DispCorr                = EnerPres  
+
+; Electrostatics
+coulombtype             = PME       
+pme_order               = 4         
+fourierspacing          = 0.16      
+
+; Temperature coupling is ON
+tcoupl                  = V-rescale                     
+tc-grps                 = System
+tau-t                   = 0.1         
+ref-t                   = 300         
+
+; Pressure coupling is ON
+pcoupl                  = Parrinello-Rahman 
+pcoupltype              = isotropic         
+tau-p                   = 2.0               
+ref-p                   = 1.0               
+compressibility         = 4.5e-5            
+refcoord_scaling        = com
+
+; Periodic boundary conditions
+pbc                     = xyz       
+
+; Velocity generation
+gen_vel                 = no        

@@ -1,0 +1,18 @@
+# Block all massive simulation outputs
+*.xtc
+*.trr
+*.edr
+*.log
+*.cpt
+*.tpr
+*#*
+step*.pdb
+nohup.out
+
+# Keep only the essential code and setup files
+!.gro
+!.top
+!.itp
+!.mdp
+!.pdbqt
+!.sh

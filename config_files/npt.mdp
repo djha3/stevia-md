@@ -1,0 +1,52 @@
+; Title: NPT Equilibration for Stevia Matrix (Single System Coupling)
+define                  = -DPOSRES  ; keeping heavy protein/ligand atoms restrained
+
+; Run parameters
+integrator              = md        
+nsteps                  = 50000     ; 100 ps
+dt                      = 0.002     ; 2 fs
+
+; Output control
+nstxout                 = 500       
+nstvout                 = 500       
+nstenergy               = 500       
+nstlog                  = 500       
+
+; Bond parameters
+continuation            = yes       ; reading velocities from NVT checkpoint
+constraint_algorithm    = lincs     
+constraints             = h-bonds   
+lincs_iter              = 1         
+lincs_order             = 4         
+
+; Nonbonded settings 
+cutoff-scheme           = Verlet    
+nstlist                 = 10        
+rcoulomb                = 1.0       
+rvdw                    = 1.0       
+DispCorr                = EnerPres  
+
+; Electrostatics
+coulombtype             = PME       
+pme_order               = 4         
+fourierspacing          = 0.16      
+
+; Temperature coupling is ON
+tcoupl                  = V-rescale                     
+tc-grps                 = System
+tau-t                   = 0.1         
+ref-t                   = 300         
+
+; Pressure coupling is ON for NPT phase
+pcoupl                  = Parrinello-Rahman 
+pcoupltype              = isotropic         
+tau-p                   = 2.0               
+ref-p                   = 1.0               
+compressibility         = 4.5e-5            
+refcoord_scaling        = com       ; Scales coordinates with the scaling matrix
+
+; Periodic boundary conditions
+pbc                     = xyz       
+
+; Velocity generation
+gen_vel                 = no        

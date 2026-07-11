@@ -1,0 +1,15 @@
+# GROMACS Large Trajectories & Binaries (Exceeds GitHub Limits)
+*.xtc
+*.trr
+*.edr
+*.tpr
+*.cpt
+*.log
+
+# GROMACS automatic backups (e.g., #topol.top.1#)
+#*#
+.#*
+
+# Windows System / WSL Metadata files
+*Zone.Identifier
+.DS_Store

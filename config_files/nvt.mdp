@@ -1,0 +1,49 @@
+; Title: NVT Equilibration for Stevia Matrix (Single System Coupling)
+define                  = -DPOSRES  ; position restrain protein/ligand
+
+; Run parameters
+integrator              = md        
+nsteps                  = 50000     ; 100 ps
+dt                      = 0.002     ; 2 fs
+
+; Output control
+nstxout                 = 500       
+nstvout                 = 500       
+nstenergy               = 500       
+nstlog                  = 500       
+
+; Bond parameters
+continuation            = no        
+constraint_algorithm    = lincs     
+constraints             = h-bonds   
+lincs_iter              = 1         
+lincs_order             = 4         
+
+; Nonbonded settings 
+cutoff-scheme           = Verlet    
+nstlist                 = 10        
+rcoulomb                = 1.0       
+rvdw                    = 1.0       
+DispCorr                = EnerPres  
+
+; Electrostatics
+coulombtype             = PME       
+pme_order               = 4         
+fourierspacing          = 0.16      
+
+; Temperature coupling is ON - Merged to prevent index group collisions
+tcoupl                  = V-rescale                     
+tc-grps                 = System
+tau-t                   = 0.1         
+ref-t                   = 300         
+
+; Pressure coupling is OFF
+pcoupl                  = no        
+
+; Periodic boundary conditions
+pbc                     = xyz       
+
+; Velocity generation
+gen_vel                 = yes       
+gen_temp                = 300       
+gen_seed                = -1        
