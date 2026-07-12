@@ -1,5 +1,35 @@
 #!/bin/bash
 
+# ==============================================================================
+# PHASE 1: AUTOMATIC DEPENDENCY & GROMACS INSTALLATION
+# ==============================================================================
+
+# Check if GROMACS (gmx) command exists on this machine
+if ! command -v gmx &> /dev/null
+then
+    echo "GROMACS not found! Starting automatic installation..."
+    
+    # Update system packages
+    sudo apt update && sudo apt upgrade -y
+    
+    # Install standard GROMACS via package manager (Fastest, CPU-optimized setup)
+    sudo apt install -y gromacs build-essential cmake libfftw3-dev wget
+    
+    # Verify the installation worked
+    if ! command -v gmx &> /dev/null
+    then
+        echo "Installation failed. Exiting script."
+        exit 1
+    fi
+    echo "GROMACS successfully installed!"
+else
+    echo "GROMACS is already installed. Skipping to simulations..."
+fi
+
+# ==============================================================================
+# PHASE 2: 20ns PRODUCTION SIMULATIONS
+# ==============================================================================
+
 # Target directories with exact capitalization
 folders=("matrix_BT_RebD" "matrix_BT_RebM" "matrix_Ecoli_RebD" "matrix_Ecoli_RebM")
 
