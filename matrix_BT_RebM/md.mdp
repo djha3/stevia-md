@@ -2,7 +2,7 @@
 
 ; Length of simulation
 dt              = 0.002     ; 2 fs time step
-nsteps          = 10000000  ; 10,000,000 steps * 0.002 ps = 20,000 ps (20 ns)
+nsteps                  = 50000000   ; 50M steps = 100 ns
 
 ; Output control (adjust to keep file sizes manageable on the cloud)
 nstxout-compressed = 5000   ; Save coordinates every 10 ps (yields 2,000 frames total)
