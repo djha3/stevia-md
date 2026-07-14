@@ -1,17 +1,17 @@
 ;
 ;	File 'mdout.mdp' was generated
-;	By user: unknown (1000)
-;	On host: Darsheel-Laptop
-;	At date: Sun May 24 21:09:32 2026
+;	By user: ubuntu (0)
+;	On host: ip-172-31-68-45
+;	At date: Mon Jul 13 16:53:51 2026
 ;
 ;	Created by:
-;	             :-) GROMACS - gmx grompp, 2025.4-Ubuntu_2025.4_1 (-:
+;	                     :-) GROMACS - gmx grompp, 2024.4 (-:
 ;	
-;	Executable:   /usr/bin/gmx
-;	Data prefix:  /usr
-;	Working dir:  /home/darsh/stevia_md/matrix_BT_RebM
+;	Executable:   /usr/local/gromacs/bin/gmx
+;	Data prefix:  /usr/local/gromacs
+;	Working dir:  /home/ubuntu/stevia_md/matrix_BT_RebM
 ;	Command line:
-;	  gmx grompp -f /home/darsh/stevia_md/config_files/md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md.tpr -maxwarn 2
+;	  gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_20ns.tpr -maxwarn 1
 
 ; VARIOUS PREPROCESSING OPTIONS
 ; Preprocessor information: use cpp syntax.
@@ -25,7 +25,7 @@ integrator               = md
 ; Start time and timestep in ps
 tinit                    = 0
 dt                       = 0.002
-nsteps                   = 500000
+nsteps                   = 10000000
 ; For exact run continuation or redoing part of a run
 init-step                = 0
 ; Part index is updated automatically on checkpointing (keeps files separate)
@@ -67,11 +67,11 @@ nstxout                  = 0
 nstvout                  = 0
 nstfout                  = 0
 ; Output frequency for energies to log file and energy file
-nstlog                   = 10000
+nstlog                   = 5000
 nstcalcenergy            = 100
-nstenergy                = 10000
+nstenergy                = 5000
 ; Output frequency and precision for .xtc file
-nstxout-compressed       = 10000
+nstxout-compressed       = 5000
 compressed-x-precision   = 1000
 ; This selects the subset of atoms for the compressed
 ; trajectory file. You can select multiple groups. By
@@ -175,7 +175,7 @@ annealing-temp           =
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = no
 gen-temp                 = 300
-gen-seed                 = -285218947
+gen-seed                 = -65549
 
 ; OPTIONS FOR BONDS    
 constraints              = h-bonds
@@ -264,8 +264,6 @@ restraint-lambdas        =
 temperature-lambdas      = 
 calc-lambda-neighbors    = 1
 init-lambda-weights      = 
-init-lambda-counts       = 
-init-wl-histogram-counts = 
 dhdl-print-energy        = no
 sc-function              = beutler
 sc-alpha                 = 0
@@ -329,6 +327,3 @@ qmmm-cp2k-active         = false
 
 ; Colvars bias
 colvars-active           = false
-
-; Neural Network potential
-nnpot-active             = false

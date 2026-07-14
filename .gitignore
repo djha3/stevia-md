@@ -1,18 +1,21 @@
-# Block all massive simulation outputs
+# Block massive binary trajectory files
 *.xtc
 *.trr
 *.edr
-*.log
 *.cpt
 *.tpr
-*#*
-step*.pdb
-nohup.out
+*.log
 
-# Keep only the essential code and setup files
-!.gro
-!.top
-!.itp
-!.mdp
-!.pdbqt
-!.sh
+# Block GROMACS backup files (hash files)
+#*#
+#*
+
+# But KEEP your setup, scripts, and small analysis graphs
+!*.xvg
+!*.gro
+!*.top
+!*.itp
+!*.mdp
+!*.ndx
+!*.sh
+!*.png

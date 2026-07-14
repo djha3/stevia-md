@@ -2,7 +2,7 @@
 ;	File 'mdout.mdp' was generated
 ;	By user: unknown (1000)
 ;	On host: Darsheel-Laptop
-;	At date: Mon May 25 03:51:35 2026
+;	At date: Tue Jul 14 02:14:08 2026
 ;
 ;	Created by:
 ;	             :-) GROMACS - gmx grompp, 2025.4-Ubuntu_2025.4_1 (-:
@@ -11,7 +11,7 @@
 ;	Data prefix:  /usr
 ;	Working dir:  /home/darsh/stevia_md/matrix_Ecoli_RebM
 ;	Command line:
-;	  gmx grompp -f /home/darsh/stevia_md/config_files/md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md.tpr -maxwarn 2
+;	  gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_20ns.tpr
 
 ; VARIOUS PREPROCESSING OPTIONS
 ; Preprocessor information: use cpp syntax.
@@ -25,7 +25,7 @@ integrator               = md
 ; Start time and timestep in ps
 tinit                    = 0
 dt                       = 0.002
-nsteps                   = 500000
+nsteps                   = 10000000
 ; For exact run continuation or redoing part of a run
 init-step                = 0
 ; Part index is updated automatically on checkpointing (keeps files separate)
@@ -67,11 +67,11 @@ nstxout                  = 0
 nstvout                  = 0
 nstfout                  = 0
 ; Output frequency for energies to log file and energy file
-nstlog                   = 10000
+nstlog                   = 5000
 nstcalcenergy            = 100
-nstenergy                = 10000
+nstenergy                = 5000
 ; Output frequency and precision for .xtc file
-nstxout-compressed       = 10000
+nstxout-compressed       = 5000
 compressed-x-precision   = 1000
 ; This selects the subset of atoms for the compressed
 ; trajectory file. You can select multiple groups. By
@@ -175,7 +175,7 @@ annealing-temp           =
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = no
 gen-temp                 = 300
-gen-seed                 = -4916873
+gen-seed                 = 1935650751
 
 ; OPTIONS FOR BONDS    
 constraints              = h-bonds
